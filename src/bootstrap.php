@@ -24,6 +24,13 @@ define('PATH_MODEL','../src/model/');
 // Initializing session
 session_start();
 
+// Detecting language
+if (!isset($_SESSION['lang'])){
+    $_SESSION['lang'] = $config['default_lang'];
+}
+
+// Loading global language file
+require '../src/lang/'.$_SESSION['lang'].'/global.php';
 
 
 // Reading current path
@@ -35,6 +42,9 @@ if (!isset($_GET['q']))
 else {
     switch ($_GET['q'])
     {
+        case 'lang':
+            $block_content =  PATH_CONTROLLER.'lang_selector/lang.php';
+            break;
         case 'user/login':
             $block_content =  PATH_CONTROLLER.'user/login.php';
             break;

@@ -1,2 +1,2 @@
-<h1>Header</h1>
+<h1><?php echo t('Header');?></h1>
 <hr>

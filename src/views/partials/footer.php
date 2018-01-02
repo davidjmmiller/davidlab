@@ -1,2 +1,2 @@
 <hr>
-<h1>Footer</h1>
+<h1><?php echo t('Footer');?></h1>

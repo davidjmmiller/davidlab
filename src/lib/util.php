@@ -1,7 +1,17 @@
 <?php
 
+function t($key)
+{
+    global $lang;
+    if (isset($lang[$_SESSION['lang']][$key]))
+    {
+        return $lang[$_SESSION['lang']][$key];
+    }
+    return '*'.$key.'*';
+}
 
-function db_connect(){
+function db_connect()
+{
     try {
         global $config;
         global $database_connection;
