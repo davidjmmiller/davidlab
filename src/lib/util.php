@@ -34,12 +34,21 @@ function db_query($sql,$params = array()){
 
         if (count($params) > 0)
         {
-            $query->execute($params);
+            $result = $query->execute($params);
         }
-        else
+        else {
+            $result = $query->execute();
+
+        }
+        if (!$result)
         {
-            $query->execute();
+            echo '<pre>';
+            $err = $query->errorInfo();
+            print_r($err);
+            echo '</pre>';
         }
+
+
         $_SESSION['db_last_insert_id'] = $database_connection->lastInsertId();
         $database_connection->commit();
     }
@@ -79,15 +88,11 @@ function new_email($from_email, $from_name, $to = array(), $subject, $body, $alt
         $mail->SMTPDebug = $config['mail_smtpdebug'];           // Enable verbose debug output
         $mail->Host = $config['mail_host'];                     // Specify main and backup SMTP servers
 
-        echo '<pre>'.$mail->Host.'</pre>';
-
         $mail->SMTPAuth = $config['mail_smtpauth'];             // Enable SMTP authentication
         $mail->Username = $config['mail_username'];             // SMTP username
         $mail->Password = $config['mail_password'];             // SMTP password
         $mail->SMTPSecure = $config['mail_smtpsecure'];         // Enable TLS encryption, `ssl` also accepted
         $mail->Port = $config['mail_port'];                     // TCP port to connect to
-
-        echo '<pre>'.$mail->Port.'</pre>';
 
         //Recipients
         $mail->setFrom($from_email, $from_name);
@@ -127,4 +132,21 @@ function new_email($from_email, $from_name, $to = array(), $subject, $body, $alt
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
     }
+}
+
+function queue_email($from_email, $from_name, $user_id = '', $to = array(), $subject, $body, $alt_body, $cc = array(), $bcc = array(), $reply_to_email = "", $reply_to_name = "")
+{
+    // Parameters
+    $to = implode(';',$to);
+    $cc = implode(';',$cc);
+    $bcc = implode(';',$bcc);
+
+    $date = new DateTime();
+    $request_time =  $date->getTimestamp();
+
+    $sql = 'INSERT INTO `email_queue` (status,request_time,user_id,from_email,from_name,`to`,subject,body,alt_body,cc,bcc,reply_to_email,reply_to_name)';
+    $sql .= 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    $params = array(1,$request_time,$user_id,$from_email,$from_name,$to,$subject,$body,$alt_body,$cc,$bcc,$reply_to_email,$reply_to_name);
+    $result = db_query($sql, $params);
+
 }

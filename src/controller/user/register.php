@@ -124,20 +124,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = 'INSERT INTO user (username,password,active) VALUES (?,MD5(?),?)';
         $params = array($username, $password, 1);
         $result = db_query($sql, $params);
+        $user_id = $_SESSION['db_last_insert_id'];
 
         $sql = 'INSERT INTO user_profile 
               (user_id,identification,first_name,last_name,country,city,address,mobile_phone) VALUES (?,?,?,?,?,?,?,?)';
-        $params = array($_SESSION['db_last_insert_id'], identification, first_name, last_name, country, city, address, mobile_phone);
+        $params = array($user_id, $identification, $first_name, $last_name, $country, $city, $address, $mobile_phone);
         $result = db_query($sql, $params);
+
+        // Queueing confirmation email
+        $body = "Hello $first_name,<br><br>Thanks for register at 506.com, please click on the following link in order to activate your account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
+        $alt_body = "Hello $first_name,\n\nThanks for register at 506.com, please click on the following link in order to activate your account.\n\n- http://www.z506.com \n\nCheers!\n\n";
+
+        queue_email('davidm@z506.com', 'Registration Confirmation', $user_id,
+                array($username), 'Welcome to z506.com', $body, $alt_body, array(), $bcc = array('daxdoxsi@gmail.com'), "", "");
 
         header('Location: /user/registration_confirmation');
     }
-
-
-    //global $db_last_insert_id;
-    // echo '<pre>';
-    // echo $_SESSION['db_last_insert_id'];
-    // echo '</pre>';
 
 
 }

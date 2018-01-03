@@ -90,7 +90,7 @@
         <legend>Account information</legend>
         <div class="form-group <?php if (isset($errors['username'])): ?>has-error<?php endif; ?>">
             <label class="control-label" for="username">Email</label>
-            <input id="username" class="form-control" name="username" type="email" size="20" maxlength="20" placeholder="Email" value="<?php echo post('username');?>">
+            <input id="username" class="form-control" name="username" type="email" size="20" maxlength="100" placeholder="Email" value="<?php echo post('username');?>">
             <?php if (isset($errors['username'])): ?>
                 <span id="helpBlock1" class="help-block"><?php echo implode(', ',$errors['username']);?> </span>
             <?php endif; ?>
