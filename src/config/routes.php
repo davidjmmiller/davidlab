@@ -8,6 +8,7 @@ switch ($_GET['q'])
         break;
     case 'lang':
         $block_content =  PATH_CONTROLLER.'lang_selector/lang.php';
+        $load_template = false;
         break;
     case 'user/login':
         $block_content =  PATH_CONTROLLER.'user/login.php';

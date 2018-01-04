@@ -12,5 +12,5 @@ if (isset($_GET[$parameter])){
             $_SESSION['lang'] = $config['default_lang'];
             break;
     }
-    header('Location: /');
 }
+header('Location: /');
