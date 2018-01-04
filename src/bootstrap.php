@@ -24,6 +24,9 @@ define('PATH_MODEL','../src/model/');
 // Initializing session
 session_start();
 
+// Flags
+$load_template = true;
+
 // Detecting language
 if (!isset($_SESSION['lang'])){
     $_SESSION['lang'] = $config['default_lang'];
@@ -44,9 +47,16 @@ else {
     $current_path = $_GET['q'];
 }
 
-// Loading additional blocks
-$block_header = PATH_CONTROLLER.'partials/header.php';
-$block_footer = PATH_CONTROLLER.'partials/footer.php';
+if ($load_template)
+{
+    // Loading additional blocks
+    $block_header = PATH_CONTROLLER . 'partials/header.php';
+    $block_footer = PATH_CONTROLLER . 'partials/footer.php';
 
-// Loading layout
-require PATH_CONTROLLER.'templates/default.php';
+    // Loading layout
+    require PATH_CONTROLLER . 'templates/default.php';
+}
+else
+{
+    require $block_content;
+}

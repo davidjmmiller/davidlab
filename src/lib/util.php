@@ -127,10 +127,11 @@ function new_email($from_email, $from_name, $to = array(), $subject, $body, $alt
         $mail->AltBody = $alt_body;
 
         $mail->send();
-        echo 'Message has been sent';
+        return true;
     } catch (Exception $e) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
+        return false;
     }
 }
 
