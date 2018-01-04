@@ -58,7 +58,7 @@ function db_query($sql,$params = array()){
         print "Error!: " . $e->getMessage() . "</br>";
     }
 
-    return $query->fetchAll();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /*
@@ -108,12 +108,12 @@ function new_email($from_email, $from_name, $to = array(), $subject, $body, $alt
 
         for ($c = 0; $c < count($cc); $c++)
         {
-            $mail->addCC($to[$cc]);               // Name is optional
+            $mail->addCC($cc[$c]);               // Name is optional
         }
 
         for ($c = 0; $c < count($bcc); $c++)
         {
-            $mail->addBCC($to[$bcc]);               // Name is optional
+            $mail->addBCC($bcc[$c]);               // Name is optional
         }
 
         //Attachments
@@ -141,12 +141,10 @@ function queue_email($from_email, $from_name, $user_id = '', $to = array(), $sub
     $cc = implode(';',$cc);
     $bcc = implode(';',$bcc);
 
-    $date = new DateTime();
-    $request_time =  $date->getTimestamp();
 
     $sql = 'INSERT INTO `email_queue` (status,request_time,user_id,from_email,from_name,`to`,subject,body,alt_body,cc,bcc,reply_to_email,reply_to_name)';
-    $sql .= 'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    $params = array(1,$request_time,$user_id,$from_email,$from_name,$to,$subject,$body,$alt_body,$cc,$bcc,$reply_to_email,$reply_to_name);
+    $sql .= 'VALUES (?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    $params = array(1,$user_id,$from_email,$from_name,$to,$subject,$body,$alt_body,$cc,$bcc,$reply_to_email,$reply_to_name);
     $result = db_query($sql, $params);
 
 }

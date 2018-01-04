@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (count($errors) == 0) {
         $sql = 'INSERT INTO user (username,password,active) VALUES (?,MD5(?),?)';
-        $params = array($username, $password, 1);
+        $params = array($username, $password, 0);
         $result = db_query($sql, $params);
         $user_id = $_SESSION['db_last_insert_id'];
 
