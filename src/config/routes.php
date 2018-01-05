@@ -19,7 +19,7 @@ switch ($_GET['q'])
     case 'user/register':
         $block_content =  PATH_CONTROLLER.'user/register.php';
         break;
-    case 'user/recover':
+    case 'user/reset':
         $block_content =  PATH_CONTROLLER.'user/recover.php';
         break;
     case 'user/registration_confirmation':

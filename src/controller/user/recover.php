@@ -1,55 +1,37 @@
 <?php
 
-if (isset($_SESSION['active']) && $_SESSION['active'] == 1)
-{
-    header('Location: /');
-}
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-
-    // Validations
-    $errors = array();
     $username = $_POST['username'];
-    $password = $_POST['password'];
 
     // Username
-    if (empty($username))
-    {
+    if (empty($username)) {
         $errors['username'][] = 'This field is required';
-    }
-    else if (!filter_var($username, FILTER_VALIDATE_EMAIL))
-    {
+    } else if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
         $errors['username'][] = 'The field should be a valid email';
-    }
-
-    // Password
-    if (empty($password))
-    {
-        $errors['password'][] = 'This field is required';
-    }
-    else if (strlen($password) < 5){
-        $errors['password'][] = 'The password length should be at least 5 characters';
-    }
-
-    // Database validation
-    if (is_array($errors) && count($errors) == 0)
-    {
-        $sql = 'SELECT * FROM user WHERE username = :username AND password = MD5(:password) AND active = 1';
-        $params = array(':username' => $username, ':password' => $password);
-        $result = db_query($sql,$params);
-        if (count($result)>0){
-            $_SESSION['active'] = 1;
-            header('Location: /');
+    } else {
+        $sql = 'SELECT * FROM user WHERE username = :username';
+        $params = array(':username' => $username);
+        $result = db_query($sql, $params);
+        if (count($result) == 0) {
+            $errors['username'][] = 'The account doesn\'t exists in the system';
         }
         else
         {
-            $errors['username'][] = 'Username or Password are incorrect';
+
+            $result = $result[0];
+
+            // Sending email with the information
+            $body = "Hello,<br><br>Please click on the following link in order to reset your password account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
+            $alt_body = "Hello,\n\nPlease click on the following link in order to reset your password account.\n\n- http://www.z506.com \n\nCheers!\n\n";
+
+            queue_email('davidm@z506.com', 'Z506.com', $result['user_id'],
+                array($result['username']), 'Password Reset', $body, $alt_body, array(), $bcc = array('daxdoxsi@gmail.com'), "", "");
+
+            header('Location: /user/login');
+
         }
+
     }
-
 }
-
-require PATH_VIEW.'user/login.php';
+require PATH_VIEW.'user/recover.php';
