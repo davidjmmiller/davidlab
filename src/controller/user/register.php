@@ -132,10 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = db_query($sql, $params);
 
         // Queueing confirmation email
-        $body = "Hello $first_name,<br><br>Thanks for register at 506.com, please click on the following link in order to activate your account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
-        $alt_body = "Hello $first_name,\n\nThanks for register at 506.com, please click on the following link in order to activate your account.\n\n- http://www.z506.com \n\nCheers!\n\n";
+        $body = require PATH_VIEW.'email_templates/user/registration_confirmation';// "Hello $first_name,<br><br>Thanks for register at 506.com, please click on the following link in order to activate your account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
+        $alt_body = strip_tags($body);
 
-        queue_email('davidm@z506.com', 'Registration Confirmation', $user_id,
+        $from_email = $config['mail_from_email_registration'];
+        $from_name = $config['mail_from_name_registration'];
+
+        queue_email($from_email, $from_name, $user_id,
                 array($username), 'Welcome to z506.com', $body, $alt_body, array(), $bcc = array('daxdoxsi@gmail.com'), "", "");
 
         header('Location: /user/registration_confirmation');

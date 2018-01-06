@@ -22,10 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $result = $result[0];
 
             // Sending email with the information
-            $body = "Hello,<br><br>Please click on the following link in order to reset your password account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
-            $alt_body = "Hello,\n\nPlease click on the following link in order to reset your password account.\n\n- http://www.z506.com \n\nCheers!\n\n";
+            $body = require PATH_VIEW.'email_templates/user/recover.php';
+                //"Hello,<br><br>Please click on the following link in order to reset your password account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
+            $alt_body = strip_tags($body);
 
-            queue_email('davidm@z506.com', 'Z506.com', $result['user_id'],
+            $from_email = $config['mail_from_email_recover'];
+            $from_name = $config['mail_from_name_recover'];
+            queue_email($from_email, $from_name, $result['user_id'],
                 array($result['username']), 'Password Reset', $body, $alt_body, array(), $bcc = array('daxdoxsi@gmail.com'), "", "");
 
             header('Location: /user/login');
