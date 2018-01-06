@@ -5,16 +5,9 @@ require '../src/config/global.php';
 require '../src/config/database.php';
 require '../src/config/email.php';
 require '../src/lib/util.php';
+require '../src/lib/database.php';
+require '../src/lib/mail.php';
 
-// Loading email library
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../src/external_lib/PHPMailer/src/Exception.php';
-require '../src/external_lib/PHPMailer/src/PHPMailer.php';
-require '../src/external_lib/PHPMailer/src/SMTP.php';
-require '../src/external_lib/PHPMailer/src/OAuth.php';
-require '../src/external_lib/PHPMailer/src/POP3.php';
 
 // Paths
 define('PATH_VIEW','../src/views/');

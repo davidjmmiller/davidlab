@@ -16,7 +16,7 @@ switch ($_GET['q'])
     case 'user/logout':
         $block_content =  PATH_CONTROLLER.'user/logout.php';
         break;
-    case 'user/register':
+    case 'user/signup':
         $block_content =  PATH_CONTROLLER.'user/register.php';
         break;
     case 'user/reset':
