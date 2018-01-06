@@ -16,11 +16,28 @@
         width: 400px;
         transition: transform 1s ease-in-out, border 1s ease-in-out;
         border: 1px solid black;
+        animation-name: slide;
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-delay: 3s;
+        animation-fill-mode: forwards;
     }
     #imagen:hover{
         transform: scale(1.2);
         border: 5px solid black;
     }
+    
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(400px);
+        }
+    }
+    
 </style>
 <script>
     var scene = new THREE.Scene();
