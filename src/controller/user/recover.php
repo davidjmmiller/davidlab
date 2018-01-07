@@ -10,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     } else if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
         $errors['username'][] = 'The field should be a valid email';
     } else {
-        $sql = 'SELECT * FROM user WHERE username = :username';
+        $sql = 'SELECT * FROM user WHERE username = :username AND active = 2';
         $params = array(':username' => $username);
         $result = db_query($sql, $params);
         if (count($result) == 0) {
-            $errors['username'][] = 'The account doesn\'t exists in the system';
+            $errors['username'][] = 'The account doesn\'t exists in the system or account is inactive';
         }
         else
         {

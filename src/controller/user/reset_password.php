@@ -19,10 +19,6 @@ if (isset($_GET['key']))
 
 if (isset($_POST['key'])) {
 
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
-
     // New Password Validation
     $errors = array();
     $password = $_POST['password'];
@@ -65,7 +61,7 @@ if (isset($_POST['key'])) {
 
         }
 
-        // header('Location: /user/login ');
+        header('Location: /user/login ');
     }
     else
     {

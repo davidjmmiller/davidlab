@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="723e3d91-bdf2-427b-a709-82414156afd3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/views/email_templates/user/reset_password.php" afterPath="$PROJECT_DIR$/src/views/user/reset_password.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/email.php" afterPath="$PROJECT_DIR$/src/config/email.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/routes.php" afterPath="$PROJECT_DIR$/src/config/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/user/recover.php" afterPath="$PROJECT_DIR$/src/controller/user/recover.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/user/reset_password.php" afterPath="$PROJECT_DIR$/src/controller/user/reset_password.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/email_templates/user/recover.php" afterPath="$PROJECT_DIR$/src/views/email_templates/user/recover.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,16 +15,40 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reset_password.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/user/reset_password.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="62" column="44" lean-forward="false" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+            <state relative-caret-position="34">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
-                <marker date="1515305875396" expanded="true" signature="102:164" ph="SELECT * FRO... user_reset" />
-                <marker date="1515305875396" expanded="true" signature="1322:1384" ph="SELECT * FRO... user_reset" />
-                <marker date="1515305875396" expanded="true" signature="1602:1670" ph="UPDATE user " />
-                <marker date="1515305875396" expanded="true" signature="1877:1947" ph="UPDATE user_... " />
+                <marker date="1515306298288" expanded="true" signature="102:164" ph="SELECT * FRO... user_reset" />
+                <marker date="1515306298288" expanded="true" signature="1263:1325" ph="SELECT * FRO... user_reset" />
+                <marker date="1515306298288" expanded="true" signature="1543:1611" ph="UPDATE user " />
+                <marker date="1515306298288" expanded="true" signature="1818:1888" ph="UPDATE user_... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/config/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recover.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/user/recover.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="76" lean-forward="false" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
+              <folding>
+                <marker date="1515306177342" expanded="true" signature="352:397" ph="SELECT * FRO... user" />
+                <marker date="1515306177342" expanded="true" signature="352:412" ph="SELECT * FRO... user" />
+                <marker date="1515306177342" expanded="true" signature="823:922" ph="INSERT INTO user_reset... " />
               </folding>
             </state>
           </provider>
@@ -157,11 +176,11 @@
         <option value="$PROJECT_DIR$/src/views/user/account_activation.php" />
         <option value="$PROJECT_DIR$/src/controller/user/login.php" />
         <option value="$PROJECT_DIR$/src/controller/user/activate.php" />
-        <option value="$PROJECT_DIR$/src/controller/user/recover.php" />
         <option value="$PROJECT_DIR$/src/config/routes.php" />
         <option value="$PROJECT_DIR$/src/views/email_templates/user/recover.php" />
         <option value="$PROJECT_DIR$/src/config/email.php" />
         <option value="$PROJECT_DIR$/src/views/user/reset_password.php" />
+        <option value="$PROJECT_DIR$/src/controller/user/recover.php" />
         <option value="$PROJECT_DIR$/src/controller/user/reset_password.php" />
       </list>
     </option>
@@ -494,12 +513,12 @@
       <updated>1514722710434</updated>
       <workItem from="1514722712741" duration="73285000" />
       <workItem from="1515088299956" duration="13134000" />
-      <workItem from="1515273072379" duration="19142000" />
+      <workItem from="1515273072379" duration="19559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105561000" />
+    <option name="totallyTimeSpent" value="105978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -851,25 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/user/recover.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <marker date="1515301022684" expanded="true" signature="352:397" ph="SELECT * FRO... user" />
-            <marker date="1515301022684" expanded="true" signature="785:884" ph="INSERT INTO user_reset... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/email.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -942,16 +942,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/user/recover.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="76" lean-forward="false" selection-start-line="12" selection-start-column="76" selection-end-line="12" selection-end-column="76" />
+          <folding>
+            <marker date="1515306177342" expanded="true" signature="352:397" ph="SELECT * FRO... user" />
+            <marker date="1515306177342" expanded="true" signature="352:412" ph="SELECT * FRO... user" />
+            <marker date="1515306177342" expanded="true" signature="823:922" ph="INSERT INTO user_reset... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/user/reset_password.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="62" column="44" lean-forward="false" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+        <state relative-caret-position="34">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <marker date="1515305875396" expanded="true" signature="102:164" ph="SELECT * FRO... user_reset" />
-            <marker date="1515305875396" expanded="true" signature="1322:1384" ph="SELECT * FRO... user_reset" />
-            <marker date="1515305875396" expanded="true" signature="1602:1670" ph="UPDATE user " />
-            <marker date="1515305875396" expanded="true" signature="1877:1947" ph="UPDATE user_... " />
+            <marker date="1515306298288" expanded="true" signature="102:164" ph="SELECT * FRO... user_reset" />
+            <marker date="1515306298288" expanded="true" signature="1263:1325" ph="SELECT * FRO... user_reset" />
+            <marker date="1515306298288" expanded="true" signature="1543:1611" ph="UPDATE user " />
+            <marker date="1515306298288" expanded="true" signature="1818:1888" ph="UPDATE user_... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
