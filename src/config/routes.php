@@ -20,7 +20,7 @@ switch ($_GET['q'])
     case 'user/activate':
         $block_content =  PATH_CONTROLLER.'user/activate.php';
         break;
-    case 'user/reset_password':
+    case 'user/set_new_password':
         $block_content =  PATH_CONTROLLER.'user/reset_password.php';
         break;
     case 'user/logout':

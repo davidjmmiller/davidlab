@@ -31,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             // Sending email with the information
             $body = require PATH_VIEW.'email_templates/user/recover.php';
-                //"Hello,<br><br>Please click on the following link in order to reset your password account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
             $alt_body = strip_tags($body);
 
             $from_email = $config['mail_from_email_recover'];

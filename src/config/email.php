@@ -13,4 +13,4 @@ $config['mail_from_email_registration'] = 'davidm@z506.com';
 $config['mail_from_name_registration'] = 'Registration System Z506';
 
 $config['mail_from_email_recover'] = 'davidm@z506.com';
-$config['mail_from_name_recover'] = 'Pasword Reset Z506';
+$config['mail_from_name_recover'] = 'Password Reset Z506';
