@@ -21,6 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
             $result = $result[0];
 
+            // Saving the reset password key
+            $key = authentication_key();
+            $sql = 'INSERT INTO user_reset 
+              (user_id,request_time,reset_key, status) VALUES (?,now(),?,?)';
+            $params = array($result['user_id'], $key, 1);
+            db_query($sql, $params);
+
+
             // Sending email with the information
             $body = require PATH_VIEW.'email_templates/user/recover.php';
                 //"Hello,<br><br>Please click on the following link in order to reset your password account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
@@ -29,9 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $from_email = $config['mail_from_email_recover'];
             $from_name = $config['mail_from_name_recover'];
             queue_email($from_email, $from_name, $result['user_id'],
-                array($result['username']), 'Password Reset', $body, $alt_body, array(), $bcc = array('daxdoxsi@gmail.com'), "", "");
+                array($result['username']), 'Password Reset', $body, $alt_body, array(),
+                array('daxdoxsi@gmail.com'), "", "");
 
-            header('Location: /user/login');
+            header('Location: /');
 
         }
 

@@ -121,18 +121,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (count($errors) == 0) {
+
+        // Storing account information
         $sql = 'INSERT INTO user (username,password,active) VALUES (?,MD5(?),?)';
         $params = array($username, $password, 0);
         $result = db_query($sql, $params);
         $user_id = $_SESSION['db_last_insert_id'];
 
+        // Store profile information
         $sql = 'INSERT INTO user_profile 
               (user_id,identification,first_name,last_name,country,city,address,mobile_phone) VALUES (?,?,?,?,?,?,?,?)';
         $params = array($user_id, $identification, $first_name, $last_name, $country, $city, $address, $mobile_phone);
         $result = db_query($sql, $params);
 
+        // Saving the activation key
+        $key = authentication_key();
+        $sql = 'INSERT INTO user_activation 
+              (user_id,creation_date,activation_key, status) VALUES (?,now(),?,?)';
+        $params = array($user_id, $key, 1);
+        $result = db_query($sql, $params);
+
+
         // Queueing confirmation email
-        $body = require PATH_VIEW.'email_templates/user/registration_confirmation';// "Hello $first_name,<br><br>Thanks for register at 506.com, please click on the following link in order to activate your account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
+        $body = require PATH_VIEW.'email_templates/user/registration_confirmation.php';// "Hello $first_name,<br><br>Thanks for register at 506.com, please click on the following link in order to activate your account.<br><br>- <a href='http://www.z506.com'>http://www.z506.com</a>";
         $alt_body = strip_tags($body);
 
         $from_email = $config['mail_from_email_registration'];

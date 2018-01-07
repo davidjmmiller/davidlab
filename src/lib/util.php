@@ -23,3 +23,7 @@ function post($name)
     return '';
 }
 
+function authentication_key(){
+    global $config;
+    return md5(date('YmdHis').$config['authentication_hash']);
+}

@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     // Database validation
     if (is_array($errors) && count($errors) == 0)
     {
-        $sql = 'SELECT * FROM user WHERE username = :username AND password = MD5(:password) AND active = 1';
+        $sql = 'SELECT * FROM user WHERE username = :username AND password = MD5(:password) AND active = 2';
         $params = array(':username' => $username, ':password' => $password);
         $result = db_query($sql,$params);
         if (count($result)>0){
