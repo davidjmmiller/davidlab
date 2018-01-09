@@ -27,3 +27,32 @@ function authentication_key(){
     global $config;
     return md5(date('YmdHis').$config['authentication_hash']);
 }
+
+function set_session_message($message){
+    if (!isset($_SESSION['message']))
+    {
+        $_SESSION['message'] = array();
+    }
+    $_SESSION['message'][] = $message;
+}
+
+function session_message($only_status = false){
+    if ($only_status) {
+        if (isset($_SESSION['message']) && count($_SESSION['message']) > 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    $output = '<ul>';
+    for($i = 0; $i < count($_SESSION['message']); $i++){
+        $output .= '<li>'.$_SESSION['message'][$i].'</li>';
+    }
+    $output .= '</ul>';
+
+    // Cleaning session messages
+    $_SESSION['message'] = array();
+
+    return $output;
+}

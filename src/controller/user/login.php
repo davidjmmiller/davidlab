@@ -42,11 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $result = db_query($sql,$params);
         if (count($result)>0){
             $_SESSION['active'] = 1;
+            set_session_message('You have log in successfully');
             header('Location: /');
         }
         else
         {
-            $errors['username'][] = 'Username or Password are incorrect';
+            $errors['username'][] = 'Username or Password are incorrect or your account is pending of activation';
         }
     }
 

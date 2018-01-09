@@ -47,7 +47,7 @@ if ($load_template)
     $block_footer = PATH_CONTROLLER . 'partials/footer.php';
 
     // Loading layout
-    require PATH_CONTROLLER . 'templates/default.php';
+    require PATH_CONTROLLER . 'templates/'.(isset($template_name) ? $template_name : 'default.php');
 }
 else
 {

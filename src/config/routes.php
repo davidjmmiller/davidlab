@@ -16,6 +16,7 @@ switch ($_GET['q'])
         break;
     case 'user/login':
         $block_content =  PATH_CONTROLLER.'user/login.php';
+        $template_name = 'blank.php';
         break;
     case 'user/activate':
         $block_content =  PATH_CONTROLLER.'user/activate.php';
